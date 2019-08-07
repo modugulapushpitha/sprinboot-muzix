@@ -1,4 +1,4 @@
 # sprinboot-muzix
 
-2.Use h2-console to view in-memory data
+4. Generated API documentation using Swagger 2
 
