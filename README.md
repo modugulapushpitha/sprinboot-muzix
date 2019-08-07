@@ -1,4 +1,6 @@
 # sprinboot-muzix
 
-4. Generated API documentation using Swagger 2
+5. Created custom exceptions TrackNotFoundException, TrackAlreadyExistsException in a
+com.stackroute.exceptions package and performed appropriate exception handling and propagation
+Back.
 
