@@ -1,4 +1,3 @@
 # sprinboot-muzix
-
-2.Use h2-console to view in-memory data
+3. Added an endpoint to search trackByName,using @Query and passing parameter to @Query
 
