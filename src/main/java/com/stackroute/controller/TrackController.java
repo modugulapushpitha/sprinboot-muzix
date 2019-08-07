@@ -74,5 +74,20 @@ public class TrackController {
         }
         return responseEntity;
     }
+    @GetMapping("track/{name}")
+    @Query("from Track where name =?1")
+    public ResponseEntity<Track> getTrackByName(@PathVariable("name") String name)
+    {
+        ResponseEntity responseEntity;
+        try
+        {
+            trackService.queryTrackByName(name);
+            responseEntity=new ResponseEntity<String>("track by name",HttpStatus.OK);
+        }catch(Exception e)
+        {
+            responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }
 

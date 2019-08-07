@@ -11,4 +11,5 @@ public interface TrackService {
     Track updateTrack(Track track);
     Track getTrackById(int id);
     List<Track> getAllTracks();
+    List<Track> queryTrackByName(String name);
 }
