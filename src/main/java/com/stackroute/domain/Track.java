@@ -1,14 +1,26 @@
 package com.stackroute.domain;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Track")
+@PropertySource("application.properties")
 public class Track {
-
     @Id
-   private int id;
+    @Column(name="id")
+    @Value("id")
+    private int id;
+    @Column(name="name")
+    @Value("${value.name}")
     private String name;
+    @Column(name="comment")
+    @Value("${value.comment}")
     private String comment;
 
     public Track() {
