@@ -39,7 +39,7 @@ public class TrackRepositoryTest {
 
 
     @Test
-    public void testSaveUser(){
+    public void testSaveTrack(){
         trackRepository.save(track);
         Track fetchTrack = trackRepository.findById(track.getId()).get();
         Assert.assertEquals(1,fetchTrack.getId());
@@ -47,7 +47,7 @@ public class TrackRepositoryTest {
     }
 
     @Test
-    public void testSaveUserFailure(){
+    public void testSaveTrackFailure(){
         Track testTrack = new Track(34,"believer","Imaginer");
         trackRepository.save(track);
         Track fetchTrack = trackRepository.findById(track.getId()).get();
@@ -55,7 +55,7 @@ public class TrackRepositoryTest {
     }
 
     @Test
-    public void testGetAllUser(){
+    public void testGetAllTracks(){
         Track t = new Track(1,"believer","imaginer");
         Track t1 = new Track(2,"Harry","new");
         trackRepository.save(t);
@@ -63,6 +63,17 @@ public class TrackRepositoryTest {
 
         List<Track> list = trackRepository.findAll();
         Assert.assertEquals("believer",list.get(0).getName());
+
+    }
+    @Test
+    public void testGetTrackByIdFailure(){
+
+        Track tracktest = new Track(1,"believer","nice");
+        Track tracktest2 = new Track(2,"sucker","average");
+        trackRepository.save(tracktest);
+        trackRepository.save(tracktest2);
+        List<Track> list = trackRepository.findAll();
+        Assert.assertNotEquals("imaginer",list.get(0).getName());
 
     }
 

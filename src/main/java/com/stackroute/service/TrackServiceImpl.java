@@ -27,25 +27,31 @@ public class TrackServiceImpl implements TrackService{
         return saveTrack;
     }
     @Override
-    public boolean deleteTrackById(int id) throws TrackNotFoundException {
-        if (getTrackById(id)== null) {
-            throw new TrackNotFoundException("The track not found");
-        } else {
-        trackRepository.delete(getTrackById(id));
-            return true;
+    public List<Track> deleteTrackById(int id) throws TrackNotFoundException {
+        if(!trackRepository.existsById(id))
+        {
+            throw new TrackNotFoundException("Track not found");
         }
+        trackRepository.delete(getTrackById(id));
+        return trackRepository.findAll();
+
     }
+
     @Override
-    public boolean updateTrack(Track track) {
-        Track updatetrack = trackRepository.findById(track.getId()).get();
-        if (updatetrack != null) {
-            updatetrack.setId(track.getId());
-            updatetrack.setName(track.getName());
-            updatetrack.setComment(track.getComment());
-            trackRepository.save(updatetrack);
-            return true;
-        } else {
-            return false;
+    public Track updateTrack(Track track) throws TrackNotFoundException {
+
+        if(trackRepository.existsById(track.getId()))
+        {
+
+            Track updateTrack=trackRepository.save(track);
+            return updateTrack;
+
+
+        }
+
+        else {
+
+            throw new TrackNotFoundException("ID doesnt exist");
         }
     }
     @Override
