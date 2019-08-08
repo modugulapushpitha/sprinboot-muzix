@@ -2,6 +2,7 @@ package com.stackroute.controller;
 
 import com.stackroute.domain.Track;
 import com.stackroute.service.TrackService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping(value="api/v1")
 public class TrackController {
     private TrackService trackService;
+    @Autowired
     public TrackController(TrackService trackService){
         this.trackService=trackService;
     }
